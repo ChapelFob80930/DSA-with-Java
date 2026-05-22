@@ -27,16 +27,8 @@ class Solution {
 
         for(int i = 0; i<mat.length*mat[0].length; i++){ //iterate over all elements
 
-            int oldRow = i/mat[0].length;
-            int oldCol = i%mat[0].length;
-            int newRow = i/c;
-            int newCol = i%c;
+            ans[i/c][i%c] = mat[i/mat[0].length][i%mat[0].length];
 
-            System.out.println(mat[oldRow][oldCol]);
-
-            ans[newRow][newCol] = mat[oldRow][oldCol];
-
-            System.out.println(ans[newRow][newCol]);
         }
         
 
