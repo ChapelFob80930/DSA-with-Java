@@ -25,8 +25,9 @@ class Solution {
 
         int[][] ans = new int[r][c];
         int totalOldCol = mat[0].length;
+        int totalOldRow = mat.length;
 
-        for(int i = 0; i<mat.length*mat[0].length; i++){ //iterate over all elements
+        for(int i = 0; i<totalOldRow*totalOldCol; i++){ //iterate over all elements
 
             ans[i/c][i%c] = mat[i/totalOldCol][i%totalOldCol];
 
