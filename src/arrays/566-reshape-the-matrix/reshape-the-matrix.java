@@ -19,13 +19,15 @@ class Solution {
         // Changing only the number of columns automatically
         // gives the new reshaped position while preserving order.
 
-        if(r*c != mat.length*mat[0].length){ //check if total number of elements is the same
+        int totalOldRow = mat.length;
+        int totalOldCol = mat[0].length;
+        
+        if(r*c != totalOldRow*totalOldCol){ //check if total number of elements is the same
             return mat;
         }
 
         int[][] ans = new int[r][c];
-        int totalOldCol = mat[0].length;
-        int totalOldRow = mat.length;
+        
 
         for(int i = 0; i<totalOldRow*totalOldCol; i++){ //iterate over all elements
 
