@@ -24,10 +24,11 @@ class Solution {
         }
 
         int[][] ans = new int[r][c];
+        int totalOldCol = mat[0].length;
 
         for(int i = 0; i<mat.length*mat[0].length; i++){ //iterate over all elements
 
-            ans[i/c][i%c] = mat[i/mat[0].length][i%mat[0].length];
+            ans[i/c][i%c] = mat[i/totalOldCol][i%totalOldCol];
 
         }
         
