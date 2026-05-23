@@ -1,31 +1,22 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
+        int unique = 1;
+        int current = 1;
 
-        int prev = 0;
-        int cnt = 0;
-        int[] ans = new int[nums.length];
-        int j = 0;
-
-        for(int i = 0; i<nums.length; i++){
-            
-            if(prev == nums[i] && i!=0){
-                continue;
+        while(current < nums.length){
+            System.out.println("Current: "+current);
+            if(nums[current] != nums[current-1]){
+                System.out.println("entered");
+                nums[unique] = nums[current];
+                unique++;
             }
 
-            cnt++;
-            prev = nums[i];
-
-            ans[j] = nums[i];
-            j++;    
-
+            current++;
         }
 
-        for(int i = 0; i<cnt; i++){
-            nums[i] = ans[i];
-        }
+        System.out.println(Arrays.toString(nums));
+        
+        return unique;
 
-        System.out.println(Arrays.toString(ans));
-
-        return cnt;
     }
 }
