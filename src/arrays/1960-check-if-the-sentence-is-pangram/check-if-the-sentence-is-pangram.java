@@ -1,31 +1,19 @@
 class Solution {
     public boolean checkIfPangram(String sentence) {
-        char[] charArray = sentence.toCharArray();
-        char[] foundArray = new char[charArray.length];
-        int uniqueCount = 0;
-        int i= 0;
-        
 
-        for(char c: charArray){
-            boolean seen = false;
-            for(char d: foundArray){
-                if(d == c)
-                {
-                    seen = true;
-                    break;
-                }
-            }
-            if(!seen){
-                foundArray[i] = c;
-                uniqueCount++;
-                i++;
+        boolean[] seen = new boolean[26];
+        int count = 0;
+
+        for(char c : sentence.toCharArray()) {
+
+            int index = c - 'a';
+
+            if(!seen[index]) {
+                seen[index] = true;
+                count++;
             }
         }
 
-        if(uniqueCount < 26){
-            return false;
-        }
-
-        return true;
+        return count == 26;
     }
 }
