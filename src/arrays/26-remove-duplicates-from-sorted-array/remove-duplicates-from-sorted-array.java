@@ -10,13 +10,17 @@ class Solution {
                 nums[unique] = nums[current];
                 unique++;
             }
-
+                                                                           
             current++;
+                                                                                            
         }
 
+                                                                                            
         System.out.println(Arrays.toString(nums));
-        
+                                                                                                                                
         return unique;
 
+                                                                                            
     }
+                                                                                            
 }
