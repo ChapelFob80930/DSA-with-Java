@@ -3,10 +3,12 @@ class Solution {
         int unique = 1;
         int current = 1;
 
+        if (nums.length == 0) return 0;
+
         while(current < nums.length){
-            System.out.println("Current: "+current);
+            // System.out.println("Current: "+current);
             if(nums[current] != nums[current-1]){
-                System.out.println("entered");
+                // System.out.println("entered");
                 nums[unique] = nums[current];
                 unique++;
             }
