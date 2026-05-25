@@ -1,4 +1,4 @@
-class Solution {
+class Solution { 
     public void setZeroes(int[][] matrix) {
 
         // These booleans store whether the ORIGINAL
