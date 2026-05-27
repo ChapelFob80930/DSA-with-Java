@@ -14,8 +14,6 @@ class Solution {
             }
         }
 
-        System.out.println(Arrays.toString(hash));
-
         for(int i = 1; i<=n; i++){
             if(hash[i] == 0){
                 return i;
