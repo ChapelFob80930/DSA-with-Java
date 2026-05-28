@@ -2,9 +2,6 @@ class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] ans = {-1, -1};
         ans[0] = findIndex(nums, target, true);
-        if(ans[0] == -1){
-            return ans;
-        }
         ans[1] = findIndex(nums, target, false);
 
         return ans;         
