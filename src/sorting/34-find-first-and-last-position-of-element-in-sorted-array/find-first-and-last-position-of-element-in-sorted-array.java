@@ -8,9 +8,11 @@ class Solution {
         // Find first occurrence of target
         ans[0] = findIndex(nums, target, true);
 
-        // Find last occurrence of target
-        ans[1] = findIndex(nums, target, false);
-
+        if(ans[0] != -1){
+            // Find last occurrence of target
+            ans[1] = findIndex(nums, target, false);
+        }       
+        
         return ans;
     }
 
