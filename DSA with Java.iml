@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/src/arrays" />
       <excludeFolder url="file://$MODULE_DIR$/src/arrays_leetcode_questions" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sorting/34-find-first-and-last-position-of-element-in-sorted-array" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sorting/745-find-smallest-letter-greater-than-target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
