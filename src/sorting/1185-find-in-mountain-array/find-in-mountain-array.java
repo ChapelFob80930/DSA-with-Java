@@ -43,12 +43,14 @@ class Solution {
         while(start<=end) {
             int mid = start + (end - start) / 2; // to avoid integer overflow
 
-            if(mountainArr.get(mid) == target){
+            int midVal = mountainArr.get(mid);
+
+            if(midVal == target){
                 return mid;
             }
 
             else if(asc){
-                if(target < mountainArr.get(mid)){
+                if(target < midVal){
                     end = mid-1;
                 }
                 else{
@@ -57,7 +59,7 @@ class Solution {
             }
 
             else{
-                if(target < mountainArr.get(mid)){
+                if(target < midVal){
                     start = mid + 1;
                 }
                 else{
