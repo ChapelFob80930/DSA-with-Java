@@ -1,32 +1,32 @@
 class Solution {
     public int peakIndexInMountainArray(int[] arr) {
 
+        // Quick intuition
+        // If arr[mid] > arr[mid + 1] → you are on the downhill side, so the peak is at mid or to its left.
+        // If arr[mid] < arr[mid + 1] → you are on the uphill side, so the peak is definitely to the right.
+        // Eventually, start and end meet at the peak index.
+
         int start = 0;
         int end = arr.length - 1;
 
-        while(start < end) {
+        // Binary Search for the peak element
+        while (start < end) {
 
             int mid = start + (end - start) / 2;
 
-            if(arr[mid] > arr[mid+1]) {
-                // we are in decreasing part of array
-                // this may be the answer, but look at left
-                // this is why end != mid - 1
+            if (arr[mid] > arr[mid + 1]) {
+                // You are in the descending part of the mountain.
+                // mid can still be the peak, so keep it in the search space.
                 end = mid;
+            } else {
+                // You are in the ascending part of the mountain.
+                // Since arr[mid + 1] > arr[mid], the peak must be on the right.
+                start = mid + 1;
             }
-
-            else {
-                // we are in ascending part of array
-                start = mid + 1; // beacuse we know that mid + 1 element > mid element
-            }
-
         }
 
-        // in the end start == end and will be pointing to the largest number beause of the 2 checks above
-        // start and end are always trying to find max element in the above 2 checks
-        // hence, when they are pointing to just one element, that is the max one because that is what the checks say
-        // at every point of time for start and end they have the best possible answer till that time
-        // and if are saying there is only item remaining, cause of the above line that is the best possible answer
-        return start; // or end as both are equal
+        // When the loop ends, start == end.
+        // Both pointers converge to the peak element's index.
+        return start; // or return end;
     }
 }
