@@ -3,16 +3,28 @@ class Solution {
     public int splitArray(int[] nums, int k) {
 
         // Minimum possible answer:
-        // If we split into n pieces (each element is its own subarray),
-        // the largest subarray sum will be the largest element itself.
-        int start = max(nums);
+        // Largest element in the array.
+        // No subarray can have a sum smaller than this.
+        int start = 0;
 
         // Maximum possible answer:
-        // If we don't split at all (1 piece),
-        // the largest subarray sum will be the sum of the entire array.
-        int end = sum(nums);
+        // Sum of the entire array.
+        // Happens when we take the whole array as one subarray.
+        int end = 0;
 
-        // Binary search on the answer space [start, end]
+        // Compute search space boundaries
+        for (int i = 0; i < nums.length; i++) {
+
+            // Largest element -> minimum possible answer
+            if (start < nums[i]) {
+                start = nums[i];
+            }
+
+            // Sum of all elements -> maximum possible answer
+            end += nums[i];
+        }
+
+        // Binary Search on the answer space [start, end]
         while (start < end) {
 
             // Candidate maximum subarray sum
@@ -24,12 +36,12 @@ class Solution {
             // Running sum of the current subarray
             int sum = 0;
 
-            // Count how many pieces are needed if
-            // no subarray is allowed to exceed 'mid'
+            // Count how many subarrays are needed
+            // if no subarray is allowed to exceed 'mid'
             for (int n : nums) {
 
-                // If adding current element exceeds 'mid',
-                // start a new subarray
+                // Current subarray would exceed the allowed limit,
+                // so start a new subarray
                 if (sum + n > mid) {
                     pieces++;
                     sum = 0;
@@ -39,19 +51,31 @@ class Solution {
             }
 
             /*
-             * If pieces <= k:
+             * Observation:
              *
-             * We successfully split the array using at most k subarrays.
-             * This means 'mid' is a VALID answer.
+             * Smaller max allowed sum (mid)
+             * -> More subarrays required
              *
-             * Since we're looking for the SMALLEST valid answer,
-             * search the left half including mid.
+             * Larger max allowed sum (mid)
+             * -> Fewer subarrays required
              *
-             * Example:
-             * Answer pattern:
+             * This creates a monotonic pattern:
+             *
              * Invalid Invalid Invalid Valid Valid Valid
              *                         ^
-             *                     first valid
+             *                   First Valid Answer
+             */
+
+            /*
+             * If pieces <= k:
+             *
+             * We successfully split the array using
+             * at most k subarrays.
+             *
+             * Therefore 'mid' is a VALID answer.
+             *
+             * Since we want the SMALLEST valid answer,
+             * search the left half including mid.
              */
             if (pieces <= k) {
                 end = mid;
@@ -60,10 +84,12 @@ class Solution {
             /*
              * If pieces > k:
              *
-             * We need more than k subarrays.
-             * This means 'mid' is too small.
+             * More than k subarrays are required.
              *
-             * Increase the allowed maximum subarray sum.
+             * This means 'mid' is too small and
+             * cannot be the answer.
+             *
+             * Increase the allowed maximum sum.
              */
             else {
                 start = mid + 1;
@@ -71,33 +97,8 @@ class Solution {
         }
 
         // start == end
-        // Smallest valid maximum subarray sum
+        // First valid answer =
+        // Minimum possible largest subarray sum
         return start;
-    }
-
-    public int max(int[] nums) {
-
-        int max = Integer.MIN_VALUE;
-
-        // Find largest element in the array
-        for (int i = 0; i < nums.length; i++) {
-            if (max < nums[i]) {
-                max = nums[i];
-            }
-        }
-
-        return max;
-    }
-
-    public int sum(int[] nums) {
-
-        int sum = 0;
-
-        // Sum of all elements
-        for (int n : nums) {
-            sum += n;
-        }
-
-        return sum;
     }
 }
