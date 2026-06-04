@@ -1,26 +1,25 @@
 class Solution {
     public int arrangeCoins(int n) {
+        int start = 1;
+        int end = n;
 
-        // Counts how many complete rows can be formed
-        int cnt = 0;
+        while(start<=end){
+            int mid = start + (end - start) / 2;
 
-        // Try building rows one by one
-        for (int i = 1; i <= n; i++) {
+            long numOfCoinsForMidNumRows = (long)mid*(mid+1)/2;
 
-            // If there are not enough coins to form the current row,
-            // stop the process
-            if ((n - i) < 0) {
-                break;
+            if(numOfCoinsForMidNumRows == n){
+                return mid;
             }
 
-            // Current row is successfully formed
-            cnt++;
+            if(numOfCoinsForMidNumRows > n){
+                end = mid - 1;
+            }
 
-            // Remove the coins used in the current row
-            n = n - i;
+            else if(numOfCoinsForMidNumRows < n){
+                start = mid + 1;
+            }
         }
-
-        // Return the number of complete rows formed
-        return cnt;
-    }
+        return end;
+    }    
 }
