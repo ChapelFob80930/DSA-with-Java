@@ -14,6 +14,9 @@
       <excludeFolder url="file://$MODULE_DIR$/src/sorting/882-peak-index-in-a-mountain-array" />
       <excludeFolder url="file://$MODULE_DIR$/src/sorting/Amazon_infinite_array_search" />
       <excludeFolder url="file://$MODULE_DIR$/src/sorting/search_in_rotated_sorted_array_with_duplicate_values" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sorting/410-split-array-largest-sum" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sorting/69-sqrtx" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sorting/find_the_rotation_count_in_rotated_sorted_array" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
