@@ -142,7 +142,7 @@ class Solution {
             //
             // Example:
             // [4,5,6,7,0,1,2]
-            //  s   m
+            //  s     m
             //
             // arr[start] = 4
             // arr[mid]   = 6
