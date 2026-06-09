@@ -1,3 +1,5 @@
+// For each interval, find the smallest start value >= its end value using binary search.
+
 class Solution {
     public int[] findRightInterval(int[][] intervals) {
 
