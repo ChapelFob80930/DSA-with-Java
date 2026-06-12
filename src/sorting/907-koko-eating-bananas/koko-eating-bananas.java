@@ -32,11 +32,6 @@ class Solution {
         while(start<end){
             int mid = start + (end - start) / 2;
 
-            System.out.println("start: "+start);
-            System.out.println("end: "+end);
-            System.out.println("mid: "+mid);
-            System.out.println();
-
             if(checkSpeed(piles, h, mid)){
                 end = mid;
             }
