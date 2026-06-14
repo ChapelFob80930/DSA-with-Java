@@ -1,4 +1,4 @@
-package sorting.binary_search_in_sorted_matrix;
+package binary_and_linear_search_leetcode_questions.binary_search_in_sorted_matrix;
 
 import java.util.Arrays;
 import java.util.Scanner;
