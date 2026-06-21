@@ -1,27 +1,14 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        cycle_sort(nums);
-
-        for(int i = 0; i<nums.length; i++){
-            if(nums[i]!=i+1){
-                return nums[i];
-            }
-        }
-
-        return -1;
-    }
-
-    public void cycle_sort(int[] arr){
-
         int i = 0;
 
-        while(i < arr.length){
+        while(i < nums.length){
 
-            int correct = arr[i];
+            int correct = nums[i];
 
-            if(arr[i] != arr[correct]){
+            if(nums[i] != nums[correct]){
 
-                swap(arr, i, correct);
+                swap(nums, i, correct);
             }
 
             else{
@@ -30,7 +17,16 @@ class Solution {
             }
 
         }
+
+        for(int j = 0; j<nums.length; j++){
+            if(nums[j]!=j+1){
+                return nums[j];
+            }
+        }
+
+        return -1;
     }
+
 
     public static void swap(int[] arr, int index1, int index2){
 
