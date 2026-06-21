@@ -18,7 +18,7 @@ class Solution {
 
         while(i < nums.length){
 
-            int correct = nums[i];
+            int correct = nums[i] - 1;
 
             if(nums[i] != nums[correct]){
 
