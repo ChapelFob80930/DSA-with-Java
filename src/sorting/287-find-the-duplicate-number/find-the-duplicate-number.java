@@ -1,19 +1,13 @@
+//amazon
 class Solution {
     public int findDuplicate(int[] nums) {
 
-        cycleSort(nums);
-
-        for(int j = 0; j<nums.length; j++){
-            if(nums[j]!=j+1){
-                return nums[j];
-            }
-        }
-
-        return -1;
+        return cycleSort(nums);
+        
     }
 
 
-    public void cycleSort(int[] nums){
+    public int cycleSort(int[] nums){
         int i = 0;
 
         while(i < nums.length){
@@ -23,6 +17,11 @@ class Solution {
             if(nums[i] != nums[correct]){
 
                 swap(nums, i, correct);
+
+            }
+
+            else if(nums[i] == nums[correct] && i!=correct){
+                return nums[i];
             }
 
             else{
@@ -31,6 +30,8 @@ class Solution {
             }
 
         }
+
+        return -1;
     }
 
 
