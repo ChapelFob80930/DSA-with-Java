@@ -1,4 +1,4 @@
-// Amazon / LeetCode 287 - Find the Duplicate Number
+// Amazon // Microsoft / LeetCode 287 - Find the Duplicate Number
 class Solution {
 
     public int findDuplicate(int[] nums) {
