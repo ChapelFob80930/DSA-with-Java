@@ -1,0 +1,13 @@
+| Specifier | Meaning                                                            | Example        |
+| --------- | ------------------------------------------------------------------ | -------------- |
+| `%c`      | Character                                                          | `'A'`          |
+| `%d`      | Decimal integer (base 10)                                          | `25`           |
+| `%e`      | Exponential (scientific notation)                                  | `1.234567e+02` |
+| `%f`      | Floating-point number                                              | `12.34`        |
+| `%i`      | Integer (same as `%d` in many languages; Java typically uses `%d`) | `25`           |
+| `%o`      | Octal number (base 8)                                              | `17`           |
+| `%s`      | String                                                             | `"Hello"`      |
+| `%u`      | Unsigned integer (**not supported in Java**)                       | `25`           |
+| `%x`      | Hexadecimal number (base 16)                                       | `ff`           |
+| `%t`      | Date/time formatting                                               | `24-06-2026`   |
+| `%n`      | New line                                                           | newline        |

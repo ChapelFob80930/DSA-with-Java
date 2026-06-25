@@ -19,6 +19,9 @@
       <excludeFolder url="file://$MODULE_DIR$/src/binary_and_linear_search_leetcode_questions/find_the_rotation_count_in_rotated_sorted_array" />
       <excludeFolder url="file://$MODULE_DIR$/src/binary_and_linear_search_leetcode_questions/search_in_rotated_sorted_array_with_duplicate_values" />
       <excludeFolder url="file://$MODULE_DIR$/src/sorting/268-missing-number" />
+      <excludeFolder url="file://$MODULE_DIR$/src/binary_search" />
+      <excludeFolder url="file://$MODULE_DIR$/src/linear_search" />
+      <excludeFolder url="file://$MODULE_DIR$/src/sorting" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
