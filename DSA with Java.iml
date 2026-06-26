@@ -22,6 +22,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/binary_search" />
       <excludeFolder url="file://$MODULE_DIR$/src/linear_search" />
       <excludeFolder url="file://$MODULE_DIR$/src/sorting" />
+      <excludeFolder url="file://$MODULE_DIR$/src/patterns" />
+      <excludeFolder url="file://$MODULE_DIR$/src/string" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
