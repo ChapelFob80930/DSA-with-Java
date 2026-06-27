@@ -1,18 +1,24 @@
 /*
 --------------------------------------------------
-Pattern: Sorting + Consecutive Sequence Tracking
+Pattern: HashSet / Consecutive Sequence
 --------------------------------------------------
 
 Idea:
-1. Sort the array so consecutive numbers become adjacent.
-2. Track the current expected number (curr).
-3. Skip duplicates since they do not affect sequence length.
-4. If the next unique number is not the expected number,
-   the previous sequence ended and a new one starts.
-5. Keep track of the longest streak found.
+1. Store all numbers in a HashSet for O(1) lookup.
+2. Only start counting from numbers that are the
+   beginning of a sequence.
+3. A number is the start of a sequence if (n - 1)
+   does NOT exist in the set.
+4. Keep extending the sequence while consecutive
+   numbers exist.
+5. Track the longest sequence length found.
 
-Time Complexity: O(n log n)   // Sorting
-Space Complexity: O(1)        // Ignoring sorting space
+Why check (n - 1)?
+- Prevents counting the same sequence multiple times.
+- Ensures each sequence is traversed exactly once.
+
+Time Complexity: O(n)
+Space Complexity: O(n)
 
 --------------------------------------------------
 Visualization Example 1
@@ -20,113 +26,156 @@ Visualization Example 1
 
 nums = [100,4,200,1,3,2]
 
-After sorting:
-[1,2,3,4,100,200]
+HashSet:
+{100,4,200,1,3,2}
 
-curr = 1
+n = 100
+99 not present -> Start sequence
+100
+length = 1
 
-1 ✓ -> expect 2 -> streak = 1
-2 ✓ -> expect 3 -> streak = 2
-3 ✓ -> expect 4 -> streak = 3
-4 ✓ -> expect 5 -> streak = 4
+n = 4
+3 present -> NOT a start
+Skip
 
-100 ✗ (expected 5)
-New sequence starts
-streak = 1
+n = 200
+199 not present -> Start sequence
+200
+length = 1
 
-200 ✗ (expected 101)
-New sequence starts
-streak = 1
+n = 1
+0 not present -> Start sequence
 
-Longest streak = 4
+1 -> 2 -> 3 -> 4
+length = 4
+
+Longest = 4
 
 --------------------------------------------------
-Visualization Example 2 (Duplicates)
+Visualization Example 2
 --------------------------------------------------
 
-nums = [1,2,2,3]
+nums = [2,20,4,10,3,4,5]
 
-After sorting:
-[1,2,2,3]
+HashSet:
+{2,3,4,5,10,20}
 
-1 ✓ -> streak = 1
-2 ✓ -> streak = 2
-2 (duplicate) -> skipped
-3 ✓ -> streak = 3
+n = 2
+1 not present -> Start sequence
 
-Longest streak = 3
+2 -> 3 -> 4 -> 5
+length = 4
+
+n = 3
+2 present -> Skip
+
+n = 4
+3 present -> Skip
+
+n = 5
+4 present -> Skip
+
+n = 10
+9 not present -> Start sequence
+length = 1
+
+n = 20
+19 not present -> Start sequence
+length = 1
+
+Longest = 4
 
 --------------------------------------------------
 Visualization Example 3
 --------------------------------------------------
 
-nums = [2,20,4,10,3,4,5]
+nums = [1,2,3,4,5]
 
-After sorting:
-[2,3,4,4,5,10,20]
+HashSet:
+{1,2,3,4,5}
 
-2 ✓ -> streak = 1
-3 ✓ -> streak = 2
-4 ✓ -> streak = 3
-4 (duplicate) -> skipped
-5 ✓ -> streak = 4
+n = 1
+0 not present -> Start sequence
 
-10 ✗ -> new sequence -> streak = 1
-20 ✗ -> new sequence -> streak = 1
+1 -> 2 -> 3 -> 4 -> 5
+length = 5
 
-Longest streak = 4
+All other numbers have predecessors,
+so they are skipped.
+
+Longest = 5
+
+--------------------------------------------------
+Key Insight
+--------------------------------------------------
+
+Every consecutive sequence has exactly one start.
+
+Example:
+
+1 -> 2 -> 3 -> 4
+
+Only 1 qualifies because:
+0 is absent
+
+2, 3, and 4 are skipped because:
+1, 2, and 3 already exist.
+
+This avoids re-counting the same sequence.
+
+Without the (n - 1) check:
+
+Start at 1 -> count 4 numbers
+Start at 2 -> count 3 numbers
+Start at 3 -> count 2 numbers
+Start at 4 -> count 1 number
+
+Lots of redundant work.
+
+With the (n - 1) check:
+
+Start only at 1 -> count once.
 */
 
 class Solution {
     public int longestConsecutive(int[] nums) {
 
-        // Edge case: empty array
-        if(nums.length == 0){
-            return 0;
+        // Store all numbers for O(1) lookup
+        Set<Integer> numSet = new HashSet<>();
+
+        int longest = 0;
+
+        for(int n : nums){
+            numSet.add(n);
         }
 
-        // Sort array so consecutive numbers become adjacent
-        Arrays.sort(nums);
-
-        int curr = nums[0];   // Current expected number
-        int streak = 0;       // Length of current sequence
-        int i = 0;
-        int res = 0;          // Longest sequence found
-
-        while(i < nums.length){
+        for(int n : numSet){
 
             /*
-             If nums[i] is not the expected number,
-             the previous sequence has ended.
-             Start a new sequence from nums[i].
+             Start counting only if n is the
+             beginning of a sequence.
 
              Example:
-             Expected: 5
-             Found:    10
+             n = 1
+             0 not present -> start
 
-             Sequence [1,2,3,4] ended.
-             Start new sequence from 10.
+             n = 3
+             2 present -> skip
             */
-            if(curr != nums[i]){
-                curr = nums[i];
-                streak = 0;
+            if(!numSet.contains(n - 1)){
+
+                int length = 1;
+
+                // Extend sequence while next number exists
+                while(numSet.contains(n + length)){
+                    length++;
+                }
+
+                // Update longest sequence found
+                longest = Math.max(longest, length);
             }
-
-            // Skip all duplicates of the current number
-            while(i < nums.length && nums[i] == curr){
-                i++;
-            }
-
-            // Move to the next expected number
-            curr++;
-
-            // Extend current sequence length
-            streak++;
-
-            // Update longest sequence found
-            res = Math.max(res, streak);
         }
 
-        return res;
+        return longest;
     }
 }
