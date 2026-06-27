@@ -16,6 +16,8 @@ Optimization:
 
 This becomes a Two Sum II problem on a sorted array.
 
+--------------------------------------------------
+
 Example:
 
 Original:
@@ -24,21 +26,27 @@ Original:
 After sorting:
 [-4, -1, -1, 0, 1, 2]
 
+--------------------------------------------------
+
 Iteration 1:
+
 i = -4
 
 Need:
 nums[l] + nums[r] = 4
 
-l -> -1
-r -> 2
+      i   l            r
+      ↓   ↓            ↓
+[-4, -1, -1, 0, 1, 2]
 
-Since sum is too small,
-move l right to increase the sum.
+sum = -4 + (-1) + 2 = -3
+
+Too small -> move l right.
 
 --------------------------------------------------
 
 Iteration 2:
+
 i = -1
 
 Need:
@@ -53,7 +61,16 @@ sum = -1 + (-1) + 2 = 0
 Found:
 [-1, -1, 2]
 
-Move both pointers inward and continue searching.
+Move both pointers inward.
+
+      i       l  r
+      ↓       ↓  ↓
+[-4, -1, -1, 0, 1, 2]
+
+sum = -1 + 0 + 1 = 0
+
+Found:
+[-1, 0, 1]
 
 --------------------------------------------------
 
@@ -70,8 +87,6 @@ If sum > 0:
 Current sum is too large.
 Move right pointer left to decrease it.
 
-This gives O(n²) instead of O(n³).
-
 --------------------------------------------------
 
 Duplicate Handling:
@@ -79,16 +94,49 @@ Duplicate Handling:
 Example:
 [-4, -1, -1, 0, 1, 2]
 
-If we start with both -1's as i,
-we generate the same triplets twice.
+If both -1's are used as i,
+the same triplets will be generated twice.
 
 So skip duplicate i values.
 
 Similarly after finding a valid triplet,
 skip duplicate left values to avoid duplicate answers.
 
-Time Complexity: O(n²)
-Space Complexity: O(1) excluding output
+--------------------------------------------------
+
+TIME COMPLEXITY
+
+Sorting:
+O(n log n)
+
+Outer loop:
+O(n)
+
+Inner two-pointer traversal:
+O(n)
+
+Overall:
+O(n²)
+
+Why not O(n² log n)?
+
+Because for each i, the pointers only move
+from left to right once and never reset.
+Across one iteration of i, l and r together
+perform at most O(n) moves.
+
+--------------------------------------------------
+
+SPACE COMPLEXITY
+
+O(1)
+
+Ignoring the output list.
+
+Only a few variables are used:
+i, l, r, sum
+
+Result storage is not counted in auxiliary space.
 */
 
 class Solution {
