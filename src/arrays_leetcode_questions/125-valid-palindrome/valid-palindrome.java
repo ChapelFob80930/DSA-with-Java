@@ -2,7 +2,6 @@ class Solution {
     public boolean isPalindrome(String s) {
         int l = 0, r = s.length()-1;
         while(l<r){
-            System.out.println("Start of loop");
             while(l<r && !isAlphaNum(s.charAt(l))){
                 l++;
             }
