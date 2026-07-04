@@ -25,6 +25,7 @@
       <excludeFolder url="file://$MODULE_DIR$/src/patterns" />
       <excludeFolder url="file://$MODULE_DIR$/src/string" />
       <excludeFolder url="file://$MODULE_DIR$/src/recursion" />
+      <excludeFolder url="file://$MODULE_DIR$/src/binary_operators_and_number_systems" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
