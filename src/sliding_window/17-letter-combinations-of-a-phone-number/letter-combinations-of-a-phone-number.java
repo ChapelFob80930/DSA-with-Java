@@ -1,5 +1,10 @@
 class Solution {
     public List<String> letterCombinations(String digits) {
+
+        if(digits.isEmpty()){
+            return new ArrayList<>();
+        }
+
         String[] map = {
                             "",     // 0
                             "",     // 1
