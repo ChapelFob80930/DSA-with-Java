@@ -1,4 +1,7 @@
 class Solution {
+
+    static final int MOD = 1_000_000_007;
+
     public int numRollsToTarget(int n, int k, int target) {
         Integer[][] dp = new Integer[n+1][target+1];
         return countNumRolls(n, k, target, dp);
@@ -21,7 +24,7 @@ class Solution {
         long cnt = 0;
 
         for(int i = 1; i<=k; i++){
-            cnt = (cnt + countNumRolls(n-1, k, target - i, dp)) % (long)(Math.pow(10, 9) + 7);
+            cnt = (cnt + countNumRolls(n-1, k, target - i, dp)) % MOD;
         }
 
         dp[n][target] = (int)(cnt);
