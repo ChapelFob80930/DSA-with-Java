@@ -5,3 +5,4 @@ src/arrays_leetcode_questions/42-trapping-rain-water|Hard|1783535400000
 src/sliding_window/17-letter-combinations-of-a-phone-number|Medium|1785090600000
 src/recursion/17-letter-combinations-of-a-phone-number|Medium|1785090600000
 src/recursion/1155-number-of-dice-rolls-with-target-sum|Medium|1785177000000
+src/dynamic_programming/1155-number-of-dice-rolls-with-target-sum|Medium|1785177000000
