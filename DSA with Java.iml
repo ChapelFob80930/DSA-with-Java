@@ -26,7 +26,8 @@
       <excludeFolder url="file://$MODULE_DIR$/src/string" />
       <excludeFolder url="file://$MODULE_DIR$/src/binary_operators_and_number_systems" />
       <excludeFolder url="file://$MODULE_DIR$/src/math_for_dsa" />
-      <excludeFolder url="file://$MODULE_DIR$/src/recursion/Easy" />
+      <excludeFolder url="file://$MODULE_DIR$/src/dynamic_programming" />
+      <excludeFolder url="file://$MODULE_DIR$/src/recursion" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

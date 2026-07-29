@@ -1,5 +1,5 @@
-class Solution {  
- 
+class Solution {
+
     // The problem asks for the answer modulo 1e9+7.
     //
     // Using a constant is much faster than repeatedly calling:
