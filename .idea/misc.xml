@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CidrRootsConfiguration">
     <excludeRoots>
+      <file path="$PROJECT_DIR$/src/backtracking/51-n-queens" />
       <file path="$PROJECT_DIR$/src/dynamic_programming/1155-number-of-dice-rolls-with-target-sum" />
       <file path="$PROJECT_DIR$/src/recursion" />
       <file path="$PROJECT_DIR$/src/recursion/17-letter-combinations-of-a-phone-number" />
