@@ -9,3 +9,4 @@ src/dynamic_programming/1155-number-of-dice-rolls-with-target-sum|Medium|1785177
 src/backtracking/51-n-queens|Hard|1785349800000
 src/backtracking/876-middle-of-the-linked-list|Easy|1786939200000
 src/backtracking/435-non-overlapping-intervals|Medium|1787025600000
+src/backtracking/647-palindromic-substrings|Medium|1787025600000
